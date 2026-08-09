@@ -1,0 +1,4 @@
+type = "text"
+title = "简历"
+description = "一份十分严肃的个人履历。"
+source = "cv.md"

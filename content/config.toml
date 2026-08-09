@@ -1,0 +1,82 @@
+[site]
+title = "邵书屿 官方网站"
+description = "2023 年 1 月出生于地球的著名人类幼崽。清华大学(2041 届)预科生,碳水化合物研究领域领军人物,汪汪队主义学派创始人。口头禅:「我最讨厌XXX了。」"
+favicon = "/favicon.svg"
+last_updated = "2026 年 8 月"
+
+[author]
+name = "邵书屿(团团)"
+title = "未来科学家 · 专业干饭人"
+institution = "碳水研究院(筹备中)"
+avatar = "/photos/blue.jpg"
+
+[social]
+# 联系方式(留空或删除即可隐藏)
+
+email = "tuantuan@milk.party"
+location = "客厅 · 玩具房"
+location_details = [
+  "汪汪队总部(沙发东侧)",
+  "可乐仓库(冰箱第二层)"
+]
+
+[features]
+# 首页展示点赞按钮
+enable_likes = true
+
+# 所有子页面合并到单页展示
+enable_one_page_mode = false
+
+[i18n]
+enabled = false
+locales = ["zh"]
+default_locale = "zh"
+mode = "fixed"
+fixed_locale = "zh"
+persist = false
+switcher = false
+
+[i18n.labels]
+zh = "中文"
+
+[[navigation]]
+title = "首页"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "图书"
+type = "page"
+target = "books"
+href = "/books"
+
+[[navigation]]
+title = "论文"
+type = "page"
+target = "publications"
+href = "/publications"
+
+[[navigation]]
+title = "教学"
+type = "page"
+target = "teaching"
+href = "/teaching"
+
+[[navigation]]
+title = "奖项"
+type = "page"
+target = "awards"
+href = "/awards"
+
+[[navigation]]
+title = "服务"
+type = "page"
+target = "services"
+href = "/services"
+
+[[navigation]]
+title = "简历"
+type = "page"
+target = "cv"
+href = "/cv"

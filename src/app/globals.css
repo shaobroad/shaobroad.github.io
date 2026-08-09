@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+/* Explicitly set dark mode to use class strategy */
+@variant dark (&:where(.dark, .dark *));
+
+/* 儿童主题:明亮奶油底色 + 暖橙/天蓝糖果色,圆润温馨 */
+
+:root,
+.light {
+  /* 温暖奶油底 */
+  --background: #fff9ef;
+  --foreground: #5a4636;
+
+  /* Brand colors - 暖橙 */
+  --primary: #f0783c;
+  --primary-light: #fba95b;
+  --primary-dark: #d65a1e;
+  --accent: #4fb8e8;
+  --accent-light: #8cd6f5;
+  --accent-dark: #2e93c7;
+
+  /* Neutral colors (暖奶茶色系) */
+  --neutral-50: #fffdf8;
+  --neutral-100: #fff3e0;
+  --neutral-200: #f7e3c3;
+  --neutral-300: #ecd0a4;
+  --neutral-400: #d6b184;
+  --neutral-500: #b08d66;
+  --neutral-600: #8a6c4e;
+  --neutral-700: #6b5340;
+  --neutral-800: #4d3b2d;
+  --neutral-900: #33281f;
+
+  /* Semantic colors */
+  --success: #7bc96f;
+  --warning: #ffb84d;
+  --error: #ff7a70;
+  --info: #6cb6f0;
+
+  /* 柔和玻璃效果 */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(240, 120, 60, 0.16);
+  --glass-shadow: rgba(240, 120, 60, 0.1);
+}
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-dark: var(--accent-dark);
+
+  /* Neutral palette */
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+
+  /* Semantic colors */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+
+  /* Glass effect */
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --color-glass-shadow: var(--glass-shadow);
+
+  /* Typography */
+  --font-sans: 'ZCOOL KuaiLe', 'Inter', 'Comic Sans MS', 'Chalkboard SE', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-8xl: 6rem;
+  --font-size-9xl: 8rem;
+
+  /* Letter spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* Line heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-glass: 0 8px 32px 0 rgba(240, 120, 60, 0.14);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.25) 100%);
+}
+
+/* 中文标题用可爱圆体 */
+html:lang(zh),
+html[data-locale^="zh"] {
+  --font-serif: "ZCOOL KuaiLe", "Comic Sans MS", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* Dark mode: 可可色温馨夜色 */
+.dark {
+  --background: #2e2721;
+  --foreground: #f2e4ce;
+
+  /* Adjust colors for dark mode */
+  --primary: #ffa76e;
+  --primary-light: #ffc49e;
+  --primary-dark: #e88447;
+  --accent: #7cc8f2;
+  --accent-light: #a8dffa;
+  --accent-dark: #54a9dc;
+
+  /* Dark mode glass effect */
+  --glass-bg: rgba(46, 39, 33, 0.8);
+  --glass-border: rgba(255, 167, 110, 0.18);
+  --glass-shadow: rgba(255, 167, 110, 0.12);
+
+  /* Neutral colors for dark mode (暖棕) */
+  --neutral-50: #241e19;
+  --neutral-100: #2e2721;
+  --neutral-200: #3a322a;
+  --neutral-300: #4d4236;
+  --neutral-400: #65563f;
+  --neutral-500: #8a7254;
+  --neutral-600: #b79a78;
+  --neutral-700: #d4bc9d;
+  --neutral-800: #e8d7bd;
+  --neutral-900: #f5ead6;
+}
+
+body {
+  position: relative;
+  /* 糖果氛围:暖橙/天蓝/薄荷三色柔光 */
+  background:
+    radial-gradient(60rem 40rem at 15% -10%, rgba(255, 183, 116, 0.22), transparent 60%),
+    radial-gradient(50rem 35rem at 110% 110%, rgba(124, 200, 242, 0.18), transparent 60%),
+    radial-gradient(40rem 30rem at 60% 20%, rgba(123, 201, 111, 0.1), transparent 60%),
+    var(--background);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-normal);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 波点花纹背景(替代赛博网格) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(rgba(240, 120, 60, 0.09) 2px, transparent 2.5px),
+    radial-gradient(rgba(124, 200, 242, 0.09) 2px, transparent 2.5px);
+  background-size: 72px 72px, 72px 72px;
+  background-position: 0 0, 36px 36px;
+  pointer-events: none;
+}
+
+::selection {
+  background: rgba(255, 179, 71, 0.45);
+}
+
+/* Typography utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* 柔和高亮 */
+.text-accent,
+.text-accent-light {
+  text-shadow: 0 0 14px rgba(124, 200, 242, 0.3);
+}
+
+/* 圆润玻璃卡片 */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dark);
+}
+
+/* Card background utility */
+.card-bg {
+  background-color: #fff3e0;
+  border: 1px solid rgba(240, 120, 60, 0.14);
+}
+
+.dark .card-bg {
+  background-color: #3a322a;
+  border-color: rgba(255, 167, 110, 0.16);
+}

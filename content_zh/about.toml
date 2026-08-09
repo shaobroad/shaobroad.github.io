@@ -1,0 +1,36 @@
+type = "about"
+title = "首页"
+
+[profile]
+research_interests = [
+  "碳水摄入学",
+  "汪汪队主义",
+  "玩具管理学",
+  "精力无限学",
+  "绘本阅读学"
+]
+
+[[sections]]
+id = "about"
+type = "markdown"
+source = "bio.md"
+title = "关于我"
+
+[[sections]]
+id = "featured_publications"
+type = "publications"
+title = "精选论文"
+filter = "selected"
+limit = 5
+
+[[sections]]
+id = "photos"
+type = "photos"
+title = "成长相册"
+source = "photos.toml"
+
+[[sections]]
+id = "news"
+type = "list"
+title = "动态"
+source = "news.toml"
