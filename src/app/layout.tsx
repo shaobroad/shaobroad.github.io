@@ -164,6 +164,17 @@ export default function RootLayout({
           }}
         />
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (['localhost', '127.0.0.1', '0.0.0.0'].includes(location.hostname)) {
+                  document.documentElement.setAttribute('data-local', 'true');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>

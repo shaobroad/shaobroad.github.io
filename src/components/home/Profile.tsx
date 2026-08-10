@@ -39,17 +39,11 @@ export default function Profile({ author, social, features, researchInterests }:
 
     const [hasLiked, setHasLiked] = useState(false);
     const [showThanks, setShowThanks] = useState(false);
-    const [isLocalhost, setIsLocalhost] = useState(true);
     const [showAddress, setShowAddress] = useState(false);
     const [isAddressPinned, setIsAddressPinned] = useState(false);
     const [showEmail, setShowEmail] = useState(false);
     const [isEmailPinned, setIsEmailPinned] = useState(false);
     const [lastClickedTooltip, setLastClickedTooltip] = useState<'email' | 'address' | null>(null);
-
-    // 本地预览时不显示不蒜子计数(localhost 是共享计数桶,数字无意义)
-    useEffect(() => {
-        setIsLocalhost(['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname));
-    }, []);
 
     // Check local storage for user's like status
     useEffect(() => {
@@ -142,10 +136,7 @@ export default function Profile({ author, social, features, researchInterests }:
                 </p>
                 {features.enable_views && (
                     <p className="text-xs text-neutral-400">
-                        {messages.profile.siteViews}:{' '}
-                        <span id="busuanzi_value_site_pv" className={isLocalhost ? 'hidden' : ''} />
-                        {isLocalhost && <span className="opacity-60">上线后显示</span>}
-                        {!isLocalhost && ' 次'}
+                        {messages.profile.siteViews}: <span id="busuanzi_value_site_pv" /><span className="local-placeholder">上线后显示</span><span className="views-suffix"> 次</span>
                     </p>
                 )}
             </div>

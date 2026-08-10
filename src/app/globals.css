@@ -263,3 +263,16 @@ body::before {
   background-color: #3a322a;
   border-color: rgba(255, 167, 110, 0.16);
 }
+
+/* 访问量统计:本地预览时隐藏计数、显示占位文案
+   由 head 内联脚本在 <html> 上标记 data-local=true */
+.local-placeholder {
+  display: none;
+}
+[data-local='true'] .local-placeholder {
+  display: inline;
+}
+[data-local='true'] #busuanzi_value_site_pv,
+[data-local='true'] .views-suffix {
+  display: none;
+}
