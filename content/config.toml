@@ -23,6 +23,8 @@ location_details = [
 [features]
 # 首页展示点赞按钮
 enable_likes = true
+# 首页展示浏览次数(不蒜子统计)
+enable_views = true
 
 # 所有子页面合并到单页展示
 enable_one_page_mode = false

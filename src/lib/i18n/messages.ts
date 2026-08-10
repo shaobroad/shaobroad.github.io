@@ -25,6 +25,7 @@ export interface LocaleMessages {
     like: string;
     liked: string;
     thanks: string;
+    siteViews: string;
   };
   home: {
     about: string;
@@ -74,6 +75,7 @@ const en: LocaleMessages = {
     like: 'Like',
     liked: 'Liked',
     thanks: 'Thanks!',
+    siteViews: 'Site views',
   },
   home: {
     about: 'About',
@@ -123,6 +125,7 @@ const zh: LocaleMessages = {
     like: '点赞',
     liked: '已点赞',
     thanks: '感谢支持！',
+    siteViews: '本站访问量',
   },
   home: {
     about: '关于我',

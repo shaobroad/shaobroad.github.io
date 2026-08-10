@@ -29,6 +29,7 @@ export interface SiteConfig {
   };
   features: {
     enable_likes: boolean;
+    enable_views?: boolean;
     enable_one_page_mode?: boolean;
   };
   navigation: Array<{

@@ -163,6 +163,7 @@ export default function RootLayout({
             __html: buildLocaleBootstrapScript(runtimeI18n),
           }}
         />
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" />
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>
