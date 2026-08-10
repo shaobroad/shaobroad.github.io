@@ -44,7 +44,6 @@ export interface LocaleMessages {
   };
   footer: {
     lastUpdated: string;
-    builtWithPrism: string;
   };
 }
 
