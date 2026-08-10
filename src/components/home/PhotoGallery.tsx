@@ -8,6 +8,8 @@ export interface PhotoItem {
   src: string;
   caption: string;
   location?: string;
+  /** 'video' 时渲染 <video> 播放器,默认按图片处理 */
+  type?: 'image' | 'video';
 }
 
 interface PhotoGalleryProps {
@@ -38,13 +40,23 @@ export default function PhotoGallery({ items, title }: PhotoGalleryProps) {
             className="bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-sm border border-neutral-200 dark:border-neutral-700 hover:shadow-lg transition-all duration-200 hover:scale-[1.02] hover:-rotate-1"
           >
             <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-700">
-              <Image
-                src={photo.src}
-                alt={photo.caption}
-                fill
-                sizes="(max-width: 640px) 100vw, 50vw"
-                className="object-cover"
-              />
+              {photo.type === 'video' ? (
+                <video
+                  src={photo.src}
+                  controls
+                  preload="metadata"
+                  playsInline
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={photo.src}
+                  alt={photo.caption}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              )}
             </div>
             <div className="p-3">
               <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-snug">{photo.caption}</p>

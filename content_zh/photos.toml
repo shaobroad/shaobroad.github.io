@@ -1,7 +1,7 @@
 [[photos]]
 src = "/photos/reading.jpg"
 caption = "沉浸式阅读现场:绘本翻得飞快,学究气质初显"
-location = "玩具房"
+location = "图书馆"
 
 [[photos]]
 src = "/photos/dinner.jpg"
@@ -22,3 +22,9 @@ location = "客厅警察局(自设)"
 src = "/photos/blue.jpg"
 caption = "标准证件照(蓝底),用于未来入学档案,趁听话时拍摄"
 location = "照相馆"
+
+[[photos]]
+src = "/photos/bath.mp4"
+caption = "洗澡现场直播:「我最烦的就是洗头了!」"
+location = "浴室"
+type = "video"
