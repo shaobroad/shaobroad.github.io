@@ -1,141 +1,55 @@
-<div align="center">
-  <img src="./logo.png" alt="PRISM Logo" height="100"/>
-</div>
+# 邵书屿(团团)的个人网站
 
-# PRISM
+> 知名人类幼崽的官方网站 —— 2023 年 1 月出生于地球,清华大学(2041 届)预科生,碳水化合物研究领域领军人物,汪汪队主义学派创始人。
+> 口头禅:「我最烦的就是XXX了。」
 
-**English** · [中文](README_cn.md) · [Demo](https://prism-demo.pages.dev)  · [Changelog](CHANGELOG.md)
+## 📖 这是什么
 
-**If you like this project, please give it a star ⭐️**
+这是团团(邵书屿)的个人网站。做这个网站的初衷很简单:**他的舅舅心血来潮**,想着给这小家伙留点东西 —— 照片、图书、论文(其实是绘本)、教学(其实是早教)、奖项(其实是小红花),以后等他长大了,回头能看到自己小时候的"光辉事迹"。
 
-PRISM stands for **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker. It is a modern, configurable, and high-performance personal website template built with Next.js, Tailwind CSS, and TypeScript. It is designed for researchers, developers, and academics to showcase their work, publications, and portfolio with ease.
+目前这网站**只是自家人看着玩**,图一乐,没什么正经用途,也欢迎各位家人有空来逛逛。
 
-Feel free to customize your own version of PRISM with coding agents.
+## 🧒 网站内容
 
-![PRISM Preview](screenshot.png)
+- **首页**:团团的照片、最近动态
+- **图书**:他的绘本藏书
+- **论文**:代表作(指涂鸦和"论文")全集
+- **奖项**:奖状(小红花)与荣誉
+- **服务**:汪汪队出警记录(大概)
+- **简历**:一份充满想象力的个人简历
 
-## ✨ Features
+所有内容都在 [`content/`](content/) 目录下,用 TOML、Markdown 和 BibTeX 文件管理,改内容不需要动代码。
 
-*   **📄 Configuration-Driven**: Manage your entire site's content using simple `TOML`, `Markdown`, and `BibTeX` files in the `content/` directory. No code changes required for content updates!
-*   **📚 BibTeX Support**: Directly render your publications from a `.bib` file. Includes search, filtering (Year, Type), and automatic citation generation.
-*   **🎨 Modern Design**: Clean, responsive UI with a beautiful serif/sans-serif typography pairing, smooth animations (Framer Motion), and Dark Mode support.
-*   **⚡️ High Performance**: Built on Next.js 20 with Turbopack. Static export ensures blazing fast load times and easy deployment.
-*   **🔍 SEO Optimized**: Dynamic metadata generation for every page.
-*   **🧩 Dynamic Routing**: Easily add new pages by simply creating a config file.
+## 🛠️ 技术栈
 
-## 🚀 Getting Started
+基于 [PRISM](https://github.com/xyjoey/PRISM) 模板改造 —— Next.js + Tailwind CSS + TypeScript,静态导出,部署哪都行。
 
-### Prerequisites
+## 🚀 本地运行
 
-*   Node.js 22 or later
-    *   **Important**: Please download and install Node.js manually from [https://nodejs.org/en/download](https://nodejs.org/en/download).
-    *   Better not to use the pre-installed version on your system, as it may be outdated or incompatible.
-*   npm, pnpm, or yarn
+需要 Node.js 22 及以上版本。
 
-### Installation
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/xyjoey/PRISM.git
-    cd PRISM
-    ```
-
-2.  **Install dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Run the development server:**
-
-    ```bash
-    npm run dev
-    ```
-
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## 🛠️ Configuration
-
-All content lives in the `content/` directory.
-
-### 1. Global Site Config (`content/config.toml`)
-Configure your site title, author details, social links, and navigation menu here.
-
-```toml
-[site]
-title = "Your Name"
-description = "Personal website of Your Name"
-url = "https://your-website.com"
-
-[author]
-name = "Your Name"
-title = "PhD Student / Researcher"
-# ...
-
-[features]
-enable_likes = true
+```bash
+npm install
+npm run dev
 ```
 
-### 2. Homepage (`content/about.toml`)
-Customize the "About" section, "News", and "Selected Publications" on the homepage.
+打开 [http://localhost:3000](http://localhost:3000) 即可预览。
 
-### 3. Publications (`content/publications.bib`)
-Export your publications from Google Scholar, Zotero, or Mendeley to `content/publications.bib`. PRISM automatically parses this file to generate your Publications page. Customize the display of publications by changing `selected`, `preview` and `description` keys in the bib file. 
-
-Publication titles support a subset of BibTeX inline formatting commands, including `\textit{}`, `\emph{}`, `\textbf{}`, `\textsc{}`, `\textsuperscript{}` and `\textsubscript{}`.
-
-### 4. Adding New Pages
-To add a new page (e.g., "Projects"), create a TOML file in `content/` (e.g., `content/projects.toml`) and add it to the `navigation` list in `content/config.toml`.
-
-Supported page types:
-*   `text`: Renders Markdown content (Great for CVs, Bio).
-*   `card`: Renders a list of cards (Great for Projects, Awards). Content of each card item supports Markdown.
-*   `publication`: Renders the full publications list with filters.
-
-### 5. I18N Support (`content_<locale>/`)
-PRISM now supports i18n, i.e., multi-language.
-
-*   Default language lives in `content/`.
-*   Additional languages live in `content_<locale>/` (for example: `content_zh/`, `content_en/`).
-*   Keep the same filenames across directories. Example:
-    *   `content/cv.md` (default)
-    *   `content_zh/cv.md`
-*   If a localized file is missing, PRISM automatically falls back to the default `content/` version.
-
-Configure language behavior in `content/config.toml`:
-
-## 📦 Deployment
-
-PRISM is optimized for static deployment.
+构建静态站点:
 
 ```bash
 npm run build
 ```
 
-This generates a static `out/` directory that can be hosted anywhere.
+生成的 `out/` 目录可以部署到 GitHub Pages、Cloudflare Pages 等任意静态托管平台(详见 [`docs/deployment.md`](docs/deployment.md))。
 
-👉 **[Read the full Deployment Guide](docs/deployment.md)** for instructions on deploying to **GitHub Pages** and **Cloudflare Pages**.
+## ✍️ 想改内容?
 
-## 📂 Project Structure
-
-```
-PRISM/
-├── content/              # All user-editable content (TOML, BibTeX, MD)
-├── public/               # Static assets (images, papers)
-├── src/
-│   ├── app/              # Next.js App Router
-│   ├── components/       # React components
-│   ├── lib/              # Utility functions (parsers, config loaders)
-│   └── types/            # TypeScript definitions
-├── next.config.ts        # Next.js configuration
-└── tailwind.config.ts    # Tailwind CSS configuration
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- 网站全局配置(标题、导航、联系方式):[`content/config.toml`](content/config.toml)
+- 首页简介、动态:[`content/about.toml`](content/about.toml)
+- 图书 / 论文 / 教学 / 奖项等页面:`content/` 下对应的 `.toml` 文件
+- 照片和文件放 [`public/`](public/) 目录
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+本项目基于 [MIT License](LICENSE) 许可。
