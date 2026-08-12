@@ -55,6 +55,20 @@ export default function Profile({ author, social, features, researchInterests }:
         }
     }, [features.enable_likes]);
 
+    // 不蒜子脚本在水合完成后注入,避免其提前往 span 写入数字导致水合不一致
+    useEffect(() => {
+        if (!features.enable_views) return;
+
+        const script = document.createElement('script');
+        script.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            script.remove();
+        };
+    }, [features.enable_views]);
+
     const handleLike = () => {
         const newLikedState = !hasLiked;
         setHasLiked(newLikedState);
