@@ -60,7 +60,7 @@ target = "books"
 href = "/books"
 
 [[navigation]]
-title = "教学"
+title = "技能图鉴"
 type = "page"
 target = "teaching"
 href = "/teaching"
