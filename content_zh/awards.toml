@@ -6,7 +6,7 @@ description = "团团获得的荣誉与奖项,由幼儿园园方(真实)认证�
 title = "「全勤小明星」"
 subtitle = "幼儿园官方认证"
 date = "2026-03"
-content = "2026 年 3 月全勤,风雨无阻。颁奖当天团团面色凝重地上台领奖,全程未笑,充分体现了对荣誉的敬畏。"
+content = "2026 年 3 月全勤,风雨无阻。"
 tags = ["全勤", "幼儿园"]
 image = "/photos/attendance-march.jpg"
 
@@ -14,7 +14,7 @@ image = "/photos/attendance-march.jpg"
 title = "「全勤小明星」×2"
 subtitle = "幼儿园官方认证"
 date = "2026-06"
-content = "再获全勤小明星,达成两次。据现场目击者称,领奖时其喜悦之情已藏不住——嘴角上扬了约 0.5 秒。"
+content = "再获全勤小明星,达成两次。"
 tags = ["全勤", "幼儿园"]
 image = "/photos/attendance-june.jpg"
 
@@ -22,6 +22,6 @@ image = "/photos/attendance-june.jpg"
 title = "「优秀宝宝」"
 subtitle = "幼儿园官方认证"
 date = "2026-07"
-content = "因在校表现优秀获评「优秀宝宝」。团团对此表示:这很正常。(转述自其本人口吻,原话待考证)"
+content = "因在校表现优秀获评「优秀宝宝」。"
 tags = ["优秀宝宝"]
 image = "/photos/good-baby.jpg"

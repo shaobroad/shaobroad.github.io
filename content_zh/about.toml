@@ -19,7 +19,7 @@ title = "关于我"
 [[sections]]
 id = "photos"
 type = "photos"
-title = "成长相册"
+title = "成长相册·部分"
 source = "photos.toml"
 
 [[sections]]
