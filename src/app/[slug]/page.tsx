@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPageConfig, getMarkdownContent } from '@/lib/content';
+import { getPageConfig, getMarkdownContent, processSections, SectionConfig } from '@/lib/content';
 import { getConfig } from '@/lib/config';
 import DynamicPageClient, { type DynamicPageLocaleData } from '@/components/pages/DynamicPageClient';
 import {
@@ -32,6 +32,16 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
     return {
       type: 'card',
       config: pageConfig as CardPageConfig,
+    };
+  }
+
+  if (pageConfig.type === 'about') {
+    const rawConfig = pageConfig as { sections?: SectionConfig[] };
+    return {
+      type: 'about',
+      id: slug,
+      config: pageConfig,
+      sections: processSections(rawConfig.sections || [], locale),
     };
   }
 

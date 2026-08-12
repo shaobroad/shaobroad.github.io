@@ -48,6 +48,12 @@ target = "about"
 href = "/"
 
 [[navigation]]
+title = "成长相册"
+type = "page"
+target = "growth"
+href = "/growth"
+
+[[navigation]]
 title = "图书"
 type = "page"
 target = "books"

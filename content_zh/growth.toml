@@ -1,0 +1,9 @@
+type = "about"
+title = "成长相册"
+description = "团团的成长记录影像馆。照片均为家属亲拍,含金量极高。"
+
+[[sections]]
+id = "growth-album"
+type = "photos"
+title = "成长相册"
+source = "growth-photos.toml"

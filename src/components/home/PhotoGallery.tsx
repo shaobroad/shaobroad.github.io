@@ -39,16 +39,18 @@ export default function PhotoGallery({ items, title }: PhotoGalleryProps) {
             transition={{ duration: 0.4, delay: 0.08 * index }}
             className="bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-sm border border-neutral-200 dark:border-neutral-700 hover:shadow-lg transition-all duration-200 hover:scale-[1.02] hover:-rotate-1"
           >
-            <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-700">
-              {photo.type === 'video' ? (
+            {photo.type === 'video' ? (
+              <div className="bg-neutral-100 dark:bg-neutral-700">
                 <video
                   src={photo.src}
                   controls
                   preload="metadata"
                   playsInline
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="block w-full h-auto"
                 />
-              ) : (
+              </div>
+            ) : (
+              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-700">
                 <Image
                   src={photo.src}
                   alt={photo.caption}
@@ -56,8 +58,8 @@ export default function PhotoGallery({ items, title }: PhotoGalleryProps) {
                   sizes="(max-width: 640px) 100vw, 50vw"
                   className="object-cover"
                 />
-              )}
-            </div>
+              </div>
+            )}
             <div className="p-3">
               <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-snug">{photo.caption}</p>
               {photo.location && (

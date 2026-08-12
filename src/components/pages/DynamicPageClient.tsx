@@ -2,15 +2,19 @@
 
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
+import SectionsView from '@/components/pages/SectionsView';
 import {
   TextPageConfig,
   CardPageConfig,
+  BasePageConfig,
 } from '@/types/page';
+import type { SectionConfig } from '@/lib/content';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 
 export type DynamicPageLocaleData =
   | { type: 'text'; config: TextPageConfig; content: string }
-  | { type: 'card'; config: CardPageConfig };
+  | { type: 'card'; config: CardPageConfig }
+  | { type: 'about'; id: string; config: BasePageConfig; sections: SectionConfig[] };
 
 interface DynamicPageClientProps {
   dataByLocale: Record<string, DynamicPageLocaleData>;
@@ -33,6 +37,11 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
       )}
       {pageData.type === 'card' && (
         <CardPage config={pageData.config} />
+      )}
+      {pageData.type === 'about' && (
+        <div className="space-y-8">
+          <SectionsView sections={pageData.sections} />
+        </div>
       )}
     </div>
   );

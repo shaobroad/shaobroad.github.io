@@ -1,59 +1,13 @@
 import { getConfig } from '@/lib/config';
-import { getMarkdownContent, getTomlContent, getPageConfig } from '@/lib/content';
+import { getPageConfig, getMarkdownContent, processSections, SectionConfig } from '@/lib/content';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
 import { BasePageConfig, TextPageConfig, CardPageConfig } from '@/types/page';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
-import { PhotoItem } from '@/components/home/PhotoGallery';
-
-interface SectionConfig {
-  id: string;
-  type: 'markdown' | 'list' | 'photos';
-  title?: string;
-  source?: string;
-  filter?: string;
-  limit?: number;
-  content?: string;
-  items?: NewsItem[];
-  photos?: PhotoItem[];
-}
-
-interface NewsItem {
-  date: string;
-  content: string;
-}
 
 type PageData =
   | { type: 'about'; id: string; sections: SectionConfig[] }
   | { type: 'text'; id: string; config: TextPageConfig; content: string }
   | { type: 'card'; id: string; config: CardPageConfig };
-
-function processSections(sections: SectionConfig[], locale?: string): SectionConfig[] {
-  return sections.map((section: SectionConfig) => {
-    switch (section.type) {
-      case 'markdown':
-        return {
-          ...section,
-          content: section.source ? getMarkdownContent(section.source, locale) : '',
-        };
-      case 'list': {
-        const newsData = section.source ? getTomlContent<{ news: NewsItem[] }>(section.source, locale) : null;
-        return {
-          ...section,
-          items: newsData?.news || [],
-        };
-      }
-      case 'photos': {
-        const photoData = section.source ? getTomlContent<{ photos: PhotoItem[] }>(section.source, locale) : null;
-        return {
-          ...section,
-          photos: photoData?.photos || [],
-        };
-      }
-      default:
-        return section;
-    }
-  });
-}
 
 function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
   const localeConfig = getConfig(locale);

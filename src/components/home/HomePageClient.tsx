@@ -1,26 +1,13 @@
 'use client';
 
 import Profile from '@/components/home/Profile';
-import About from '@/components/home/About';
-import News, { NewsItem } from '@/components/home/News';
-import PhotoGallery, { PhotoItem } from '@/components/home/PhotoGallery';
+import SectionsView from '@/components/pages/SectionsView';
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
 import type { SiteConfig } from '@/lib/config';
+import type { SectionConfig } from '@/lib/content';
 import { CardPageConfig, TextPageConfig } from '@/types/page';
 import { useLocaleStore } from '@/lib/stores/localeStore';
-
-interface SectionConfig {
-  id: string;
-  type: 'markdown' | 'list' | 'photos';
-  title?: string;
-  source?: string;
-  filter?: string;
-  limit?: number;
-  content?: string;
-  items?: NewsItem[];
-  photos?: PhotoItem[];
-}
 
 type PageData =
   | { type: 'about'; id: string; sections: SectionConfig[] }
@@ -65,36 +52,9 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
         <div className="lg:col-span-2 space-y-8">
           {data.pagesToShow.map((page) => (
             <section key={page.id} id={page.id} className="scroll-mt-24 space-y-8">
-              {page.type === 'about' && page.sections.map((section: SectionConfig) => {
-                switch (section.type) {
-                  case 'markdown':
-                    return (
-                      <About
-                        key={section.id}
-                        content={section.content || ''}
-                        title={section.title}
-                      />
-                    );
-                  case 'list':
-                    return (
-                      <News
-                        key={section.id}
-                        items={section.items || []}
-                        title={section.title}
-                      />
-                    );
-                  case 'photos':
-                    return (
-                      <PhotoGallery
-                        key={section.id}
-                        items={section.photos || []}
-                        title={section.title}
-                      />
-                    );
-                  default:
-                    return null;
-                }
-              })}
+              {page.type === 'about' && (
+                <SectionsView sections={page.sections} />
+              )}
               {page.type === 'text' && (
                 <TextPage
                   config={page.config}

@@ -1,8 +1,51 @@
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'smol-toml';
+import type { NewsItem } from '@/components/home/News';
+import type { PhotoItem } from '@/components/home/PhotoGallery';
 
 const DEFAULT_CONTENT_DIR = 'content';
+
+export interface SectionConfig {
+  id: string;
+  type: 'markdown' | 'list' | 'photos';
+  title?: string;
+  source?: string;
+  filter?: string;
+  limit?: number;
+  content?: string;
+  items?: NewsItem[];
+  photos?: PhotoItem[];
+}
+
+/** 根据 section 的 source 加载并填充渲染所需数据(content/items/photos) */
+export function processSections(sections: SectionConfig[], locale?: string): SectionConfig[] {
+  return sections.map((section: SectionConfig) => {
+    switch (section.type) {
+      case 'markdown':
+        return {
+          ...section,
+          content: section.source ? getMarkdownContent(section.source, locale) : '',
+        };
+      case 'list': {
+        const newsData = section.source ? getTomlContent<{ news: NewsItem[] }>(section.source, locale) : null;
+        return {
+          ...section,
+          items: newsData?.news || [],
+        };
+      }
+      case 'photos': {
+        const photoData = section.source ? getTomlContent<{ photos: PhotoItem[] }>(section.source, locale) : null;
+        return {
+          ...section,
+          photos: photoData?.photos || [],
+        };
+      }
+      default:
+        return section;
+    }
+  });
+}
 
 function normalizeLocale(locale: string): string {
   return locale.trim().replace('_', '-').toLowerCase();
