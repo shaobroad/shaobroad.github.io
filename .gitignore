@@ -45,3 +45,6 @@ next-env.d.ts
 
 # local artifacts
 下载.txt
+
+# 服务视频源文件(已复制到 public/videos/,此目录仅供本地备份)
+/content/邵书屿提供的服务/

@@ -57,7 +57,18 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                         transition={{ duration: 0.4, delay: 0.1 * index }}
                         className={`bg-white dark:bg-neutral-900 ${embedded ? "p-4" : "p-6"} rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-lg transition-all duration-200 hover:scale-[1.01]`}
                     >
-                        {item.image && (
+                        {item.video && (
+                            <div className="aspect-[4/3] overflow-hidden rounded-lg mb-4 bg-neutral-100 dark:bg-neutral-800">
+                                <video
+                                    src={item.video}
+                                    controls
+                                    preload="metadata"
+                                    playsInline
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+                        )}
+                        {!item.video && item.image && (
                             <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4 bg-neutral-100 dark:bg-neutral-800">
                                 <Image
                                     src={item.image}

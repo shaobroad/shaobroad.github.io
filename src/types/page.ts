@@ -1,12 +1,7 @@
 export interface BasePageConfig {
-    type: 'about' | 'publication' | 'card' | 'text';
+    type: 'about' | 'card' | 'text';
     title: string;
     description?: string;
-}
-
-export interface PublicationPageConfig extends BasePageConfig {
-    type: 'publication';
-    source: string;
 }
 
 export interface TextPageConfig extends BasePageConfig {
@@ -22,6 +17,8 @@ export interface CardItem {
     tags?: string[];
     link?: string;
     image?: string;
+    /** 视频地址,设置后按 <video> 播放器渲染(优先于 image) */
+    video?: string;
 }
 
 export interface CardPageConfig extends BasePageConfig {
