@@ -1,21 +1,18 @@
 import { getConfig } from '@/lib/config';
-import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
-import { parseBibTeX } from '@/lib/bibtexParser';
+import { getMarkdownContent, getTomlContent, getPageConfig } from '@/lib/content';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
-import { Publication } from '@/types/publication';
-import { BasePageConfig, PublicationPageConfig, TextPageConfig, CardPageConfig } from '@/types/page';
+import { BasePageConfig, TextPageConfig, CardPageConfig } from '@/types/page';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 import { PhotoItem } from '@/components/home/PhotoGallery';
 
 interface SectionConfig {
   id: string;
-  type: 'markdown' | 'publications' | 'list' | 'photos';
+  type: 'markdown' | 'list' | 'photos';
   title?: string;
   source?: string;
   filter?: string;
   limit?: number;
   content?: string;
-  publications?: Publication[];
   items?: NewsItem[];
   photos?: PhotoItem[];
 }
@@ -27,7 +24,6 @@ interface NewsItem {
 
 type PageData =
   | { type: 'about'; id: string; sections: SectionConfig[] }
-  | { type: 'publication'; id: string; config: PublicationPageConfig; publications: Publication[] }
   | { type: 'text'; id: string; config: TextPageConfig; content: string }
   | { type: 'card'; id: string; config: CardPageConfig };
 
@@ -39,17 +35,6 @@ function processSections(sections: SectionConfig[], locale?: string): SectionCon
           ...section,
           content: section.source ? getMarkdownContent(section.source, locale) : '',
         };
-      case 'publications': {
-        const bibtex = getBibtexContent('publications.bib', locale);
-        const allPubs = parseBibTeX(bibtex, locale);
-        const filteredPubs = section.filter === 'selected'
-          ? allPubs.filter((p) => p.selected)
-          : allPubs;
-        return {
-          ...section,
-          publications: filteredPubs.slice(0, section.limit || 5),
-        };
-      }
       case 'list': {
         const newsData = section.source ? getTomlContent<{ news: NewsItem[] }>(section.source, locale) : null;
         return {
@@ -93,17 +78,6 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
             type: 'about',
             id: item.target,
             sections: processSections((rawConfig as { sections: SectionConfig[] }).sections || [], locale),
-          } as PageData;
-        }
-
-        if (pageConfig.type === 'publication') {
-          const pubConfig = pageConfig as PublicationPageConfig;
-          const bibtex = getBibtexContent(pubConfig.source, locale);
-          return {
-            type: 'publication',
-            id: item.target,
-            config: pubConfig,
-            publications: parseBibTeX(bibtex, locale),
           } as PageData;
         }
 

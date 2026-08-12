@@ -46,10 +46,6 @@ export function getMarkdownContent(filename: string, locale?: string): string {
   return readFirstAvailableFile(filename, locale);
 }
 
-export function getBibtexContent(filename: string, locale?: string): string {
-  return readFirstAvailableFile(filename, locale);
-}
-
 export function getTomlContent<T>(filename: string, locale?: string): T | null {
   const content = readFirstAvailableFile(filename, locale);
   if (!content) {

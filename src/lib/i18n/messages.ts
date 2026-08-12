@@ -30,18 +30,6 @@ export interface LocaleMessages {
   home: {
     about: string;
     news: string;
-    selectedPublications: string;
-    viewAll: string;
-  };
-  publications: {
-    searchPlaceholder: string;
-    filters: string;
-    year: string;
-    type: string;
-    noResults: string;
-    abstract: string;
-    bibtex: string;
-    code: string;
   };
   footer: {
     lastUpdated: string;
@@ -80,18 +68,6 @@ const en: LocaleMessages = {
   home: {
     about: 'About',
     news: 'News',
-    selectedPublications: 'Selected Publications',
-    viewAll: 'View All',
-  },
-  publications: {
-    searchPlaceholder: 'Search publications...',
-    filters: 'Filters',
-    year: 'Year',
-    type: 'Type',
-    noResults: 'No publications found matching your criteria.',
-    abstract: 'Abstract',
-    bibtex: 'BibTeX',
-    code: 'Code',
   },
   footer: {
     lastUpdated: 'Last updated',
@@ -130,18 +106,6 @@ const zh: LocaleMessages = {
   home: {
     about: '关于我',
     news: '动态',
-    selectedPublications: '精选论文',
-    viewAll: '查看全部',
-  },
-  publications: {
-    searchPlaceholder: '搜索论文...',
-    filters: '筛选',
-    year: '年份',
-    type: '类型',
-    noResults: '没有找到符合条件的论文。',
-    abstract: '摘要',
-    bibtex: 'BibTeX',
-    code: '代码',
   },
   footer: {
     lastUpdated: '最近更新',

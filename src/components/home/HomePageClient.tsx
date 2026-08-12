@@ -2,33 +2,28 @@
 
 import Profile from '@/components/home/Profile';
 import About from '@/components/home/About';
-import SelectedPublications from '@/components/home/SelectedPublications';
 import News, { NewsItem } from '@/components/home/News';
 import PhotoGallery, { PhotoItem } from '@/components/home/PhotoGallery';
-import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
 import type { SiteConfig } from '@/lib/config';
-import { Publication } from '@/types/publication';
-import { CardPageConfig, PublicationPageConfig, TextPageConfig } from '@/types/page';
+import { CardPageConfig, TextPageConfig } from '@/types/page';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 
 interface SectionConfig {
   id: string;
-  type: 'markdown' | 'publications' | 'list' | 'photos';
+  type: 'markdown' | 'list' | 'photos';
   title?: string;
   source?: string;
   filter?: string;
   limit?: number;
   content?: string;
-  publications?: Publication[];
   items?: NewsItem[];
   photos?: PhotoItem[];
 }
 
 type PageData =
   | { type: 'about'; id: string; sections: SectionConfig[] }
-  | { type: 'publication'; id: string; config: PublicationPageConfig; publications: Publication[] }
   | { type: 'text'; id: string; config: TextPageConfig; content: string }
   | { type: 'card'; id: string; config: CardPageConfig };
 
@@ -80,15 +75,6 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
                         title={section.title}
                       />
                     );
-                  case 'publications':
-                    return (
-                      <SelectedPublications
-                        key={section.id}
-                        publications={section.publications || []}
-                        title={section.title}
-                        enableOnePageMode={data.enableOnePageMode}
-                      />
-                    );
                   case 'list':
                     return (
                       <News
@@ -109,13 +95,6 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
                     return null;
                 }
               })}
-              {page.type === 'publication' && (
-                <PublicationsList
-                  config={page.config}
-                  publications={page.publications}
-                  embedded={true}
-                />
-              )}
               {page.type === 'text' && (
                 <TextPage
                   config={page.config}
